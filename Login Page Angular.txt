@@ -1,0 +1,117 @@
+<div class="d-flex justify-content-center align-items-center login-container" style="height: 100vh;">
+    <div class="card">
+      <div class="card-body">
+        <div class="header-box">
+          <h2 class="card-title text-center">Employee Login</h2>
+        </div>
+          <div>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+              <div class="form-group">
+                <label for="username">Username or Email</label>
+                <input type="text" class="form-control" id="username" formControlName="username">
+                <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)">
+                  <small class="text-danger" *ngIf="loginForm.get('username')?.errors?.['required']">Username is required</small>
+                  <small class="text-danger" *ngIf="loginForm.get('username')?.errors?.['email']">Invalid email format</small>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" formControlName="password">
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+                  <small class="text-danger" *ngIf="loginForm.get('password')?.errors?.['required']">Password is required</small>
+                  <small class="text-danger" *ngIf="loginForm.get('password')?.errors?.['minlength']">Password should be at least 6 characters long</small>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+-------------------------------------Login-page.component.html
+
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+@Component({
+  selector: 'app-login-page',
+  templateUrl: './login-page.component.html',
+  styleUrls: ['./login-page.component.css']
+})
+export class LoginPageComponent implements OnInit {
+  loginForm!: FormGroup;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.loginForm = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+  }
+
+  login() {
+    if (this.loginForm.valid) {
+      console.log('Username:', this.loginForm.value.username);
+      console.log('Password:', this.loginForm.value.password);
+      // Perform login logic here
+    }
+  }
+}--------------------------login.component.ts
+header-box {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  input[type="email"],
+  input[type="password"] {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    content: center;
+  }
+  
+  .btn-primary {
+    width: 50%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #45a049;
+  }--------------------------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
+import { LoginPageComponent } from './login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    LoginPageComponent,
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }---------------------App Module
+
+    <app-login-page></app-login-page>app.component.html
+		
