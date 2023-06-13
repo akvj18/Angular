@@ -1,0 +1,142 @@
+using System.Web.Http;
+using System.Data.SqlClient;
+using System.Collections.Generic;
+
+
+namespace CurdAPI1.Controllers
+{
+  
+
+    public class EmployeeController : ApiController
+    {
+        [HttpGet]
+        [Route("api/employee/GetEmployee")]
+        public IHttpActionResult GetEmployee()
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+            string query = "SELECT * FROM Departments";
+
+            List<object> employees = new List<object>();
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    while (reader.Read())
+                    {
+                        var employee = new
+                        {
+                            DepartmentName = reader["DepartmentName"],
+                         
+                            DepartmentId = reader["DepartmentId"]
+                        };
+
+                        employees.Add(employee);
+                    }
+
+                    connection.Close();
+                }
+            }
+
+            return Ok(employees);
+        }
+
+        [HttpPost]
+        [Route("api/employee/AddEmployee")]
+        public IHttpActionResult AddEmployee([FromBody] Employee employee)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+
+            string query = "INSERT INTO Departments (DepartmentId,DepartmentName) VALUES (@DepartmentId,@DepartmentName)";
+
+
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
+                    command.Parameters.AddWithValue("@DepartmentName", employee.DepartmentName);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+
+            return Ok(new { message = "Employee added successfully" });
+        }
+
+        [HttpDelete]
+        [Route("api/employee/DeleteEmployee")]
+        public IHttpActionResult DeleteEmployee(int DepartmentId)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+
+            string query = "DELETE FROM Departments WHERE DepartmentId = @DepartmentId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DepartmentId", DepartmentId);
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        return Ok(new { message = "Employee deleted successfully" });
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+            }
+        }
+
+
+        [HttpPut]
+        [Route("api/employee/UpdateEmployee")]
+        public IHttpActionResult UpdateEmployee(Employee employee)
+        {
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConString"].ConnectionString;
+
+            string query = "UPDATE Departments SET DepartmentName = @DepartmentName WHERE DepartmentId = @DepartmentId";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@DepartmentId", employee.DepartmentId);
+                    command.Parameters.AddWithValue("@DepartmentName", employee.DepartmentName);
+                    connection.Open();
+                    int rowsAffected = command.ExecuteNonQuery();
+                    connection.Close();
+
+                    if (rowsAffected > 0)
+                    {
+                        return Ok(new { message = "Employee updated successfully" });
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+            }
+        }
+
+
+    }
+
+   
+    public class Employee
+    {
+        
+        public string DepartmentName { get; set; }
+        public int DepartmentId { get; set; }
+    }
+}
