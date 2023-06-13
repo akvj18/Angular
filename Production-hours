@@ -1,0 +1,442 @@
+<div class="ui-content-header">
+    <app-header-nav-title></app-header-nav-title>
+        <app-prodution-header-section></app-prodution-header-section>
+    </div>
+    <div class="table_pro">
+        <ul class="nav nav-tabs" id="customerTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#all-tab-pane" type="button" role="tab" aria-controls="all-tab-pane" aria-selected="true"><span>All</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#recent-tab-pane" type="button" role="tab" aria-controls="recent-tab-pane" aria-selected="false"><span>Recent</span></button>
+        </li>
+        <li class="nav-item" role="presentation">
+        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#pinned-tab-pane" type="button" role="tab" aria-controls="pinned-tab-pane" aria-selected="false"><span>Pinned</span></button>
+        </li>
+        
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="all-tab-pane" role="tabpanel" aria-labelledby="all-tab" tabindex="0">
+            <div class="customer-table-wrapper table-responsive">						
+                <table class="table" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Pinned
+                            </th>
+                            <th scope="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="">												  
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Account</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Username</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Stsdesc</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">9</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">10</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">11</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>anitha.pasupathi 71747</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>BRIS</td>
+                            <td>kaviya.priya 71749</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>CRSNI</td>
+                            <td>pa bharathy 01893</td>
+                            <td>Completed with F/up date</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>DRSNI</td>
+                            <td>sreejith bal 70651</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>ERSNI</td>
+                            <td>srinivas.mar 71372</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>FRSNI</td>
+                            <td>srinivas.mar 713723</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>SRSNI</td>
+                            <td>Rsrinivas.mar 713723</td>
+                            <td>Dompleted with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>TRSNI</td>
+                            <td>Rsrinivas.mar 713723</td>
+                            <td>Eompleted with F/up date</td>
+                            <td>2</td>
+                            <td>4</td>
+                            <td>8</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="recent-tab-pane" role="tabpanel" aria-labelledby="recent-tab" tabindex="0">
+            <div class="customer-table-wrapper table-responsive">						
+                <table class="table" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Pinned
+                            </th>
+                            <th scope="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="">												  
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Account</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Username</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Stsdesc</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Test 1</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Test 2</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">TEST 3</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>anitha.pasupathi 71747</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RIS</td>
+                            <td>kaviya.priya 71749</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>pa bharathy 01893</td>
+                            <td>Completed with F/up date</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>sreejith bal 70651</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>srinivas.mar 71372</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="tab-pane fade" id="pinned-tab-pane" role="tabpanel" aria-labelledby="pinned-tab" tabindex="0">
+            <div class="customer-table-wrapper table-responsive">						
+                <table class="table" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                Pinned
+                            </th>
+                            <th scope="col">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="checkbox" value="">												  
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Account</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w150">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Username</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">Stsdesc</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">9</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">10</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                            <th scope="col" class="th-w180">
+                                <div class="ui-header-cell">
+                                    <div class="ui-header-cell-text">11</div>
+                                    <span class="ui_icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" focusable="false" aria-hidden="true"><path class="stroke-linejoin-round" d="M4 5h8l-4 6-4-6z"></path></svg></span>
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>anitha.pasupathi 71747</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RIS</td>
+                            <td>kaviya.priya 71749</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>2</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>pa bharathy 01893</td>
+                            <td>Completed with F/up date</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>sreejith bal 70651</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="ui-icon-pinned"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pin-angle-fill" viewBox="0 0 16 16">
+                              <path d="M9.828.722a.5.5 0 0 1 .354.146l4.95 4.95a.5.5 0 0 1 0 .707c-.48.48-1.072.588-1.503.588-.177 0-.335-.018-.46-.039l-3.134 3.134a5.927 5.927 0 0 1 .16 1.013c.046.702-.032 1.687-.72 2.375a.5.5 0 0 1-.707 0l-2.829-2.828-3.182 3.182c-.195.195-1.219.902-1.414.707-.195-.195.512-1.22.707-1.414l3.182-3.182-2.828-2.829a.5.5 0 0 1 0-.707c.688-.688 1.673-.767 2.375-.72a5.922 5.922 0 0 1 1.013.16l3.134-3.133a2.772 2.772 0 0 1-.04-.461c0-.43.108-1.022.589-1.503a.5.5 0 0 1 .353-.146z"/>
+                                </svg></span>
+                            </td>
+                            <td class="ui-selection-cell"><div class="form-check"><input class="form-check-input" type="checkbox" value=""></div></td>
+                            <td>RSNI</td>
+                            <td>srinivas.mar 71372</td>
+                            <td>Completed with F/up date</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    </div>
