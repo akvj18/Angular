@@ -1,0 +1,47 @@
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  responses: any[] = [
+    { '12': 9, '13': 10 },
+    { '11': 8, '14': 4 },
+    { '13': 5, '12': 5 }
+  ];
+
+  getColumnNames(): string[] {
+    // Extract all unique column names from the responses
+    const columnNames = [];
+    for (const response of this.responses) {
+      const keys = Object.keys(response);
+      for (const key of keys) {
+        if (!columnNames.includes(key)) {
+          columnNames.push(key);
+        }
+      }
+    }
+    return columnNames;
+  }
+}
+-----------------------------
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let columnName of getColumnNames()">{{ columnName }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td *ngFor="let columnName of getColumnNames()">
+        {{ responses[0]?.[columnName] }}
+      </td>
+    </tr>
+  </tbody>
+</table>
+------------------------
+In this example, the responses array holds the API responses. The getColumnNames() method extracts all the unique column names from the responses and returns them as an array. In the template, we use the *ngFor directive to iterate over the column names and dynamically display them as table headers. We also use the *ngFor directive to iterate over the column names and display the corresponding values from the first response object in the table body.
+
+With this approach, the column names will be dynamically displayed in the table based on the unique keys (column names) found in the API responses.
