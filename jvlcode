@@ -1,3 +1,15 @@
 https://github.com/jvlcode/angular-data-sharing-using-input-output-decorators.git
 
 https://github.com/jvlcode/angular-share-data-using-services.git
+
+Output decorator bayanpaduthi oru event ta generate pannanum athutan customer added appadinu sollra oru event, eppolam customer oda data va inthe event kulla add seirom mo appo la intha 
+event aanathu generate seiya padum,appadi generate seiyum pothu,customers appadinu sollra oru array data va athu kondupogum ,data kondupogum intha event ku yaaru listen seirangalo avanga antha data va adanchukulam
+
+
+Input decorator bayanpaduthi,customers indra oru input ta urvakidurom
+
+@output() customerAdded=new eventEmitter<customer[]>;
+
+emit -- event ta generate panrathukana function
+
+@input() customers :Customer[]=[]
