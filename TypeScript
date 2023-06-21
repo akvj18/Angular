@@ -1,0 +1,125 @@
+import { Component, Input,ElementRef,AfterViewInit,ViewChild } from '@angular/core';
+import { ProdutionheaderService } from 'src/app/produtionheader.service';
+import { Router } from '@angular/router';
+import { ProdutionTableComponent } from '../prodution-table/prodution-table.component'; 
+import { ColumnNamesService } from '../column-names.service';
+import { PreferencesmodalComponent } from '../preferencesmodal/preferencesmodal.component';
+
+
+import * as jQuery from 'jquery';
+import 'jquery-datetimepicker';
+import 'jquery-datetimepicker/build/jquery.datetimepicker.full.min.js';
+
+
+
+const $jq = jQuery.noConflict();
+declare var $: any;
+
+@Component({
+  selector: 'app-prodution-header-section',
+  templateUrl: './prodution-header-section.component.html',
+  styleUrls: ['./prodution-header-section.component.css']
+})
+export class ProdutionHeaderSectionComponent  implements AfterViewInit{
+  @ViewChild('workdate') workdateInput!: ElementRef;
+  @Input() item = '';
+  @Input() prodution: any;
+  showTable: boolean = false;
+  data:any;
+  timeZone: string = '';
+  workDateFrom: string = '';
+  datacolname:any=[];
+
+  updateWorkDate(value: string): void {
+    this.workDateFrom = value;
+  }
+ constructor(
+    private router: Router,
+    private elementRef: ElementRef,
+    private produtionService: ProdutionheaderService,
+    private produtionTableComponent: ProdutionTableComponent,
+    private PreferencesmodalComponent: PreferencesmodalComponent 
+  ) {}
+
+
+  showAlert(message: string): void {
+    const alertElement = document.createElement('div');
+    alertElement.innerText = message;
+      
+    alertElement.classList.add('alert-wapper');
+  
+    const containerElement = document.querySelector('.ui-filter');
+    if (containerElement) {
+      containerElement.prepend(alertElement);
+      window.scrollTo(0, 0);
+  
+      setTimeout(() => {
+        alertElement.remove();
+      }, 3000);
+    }
+  }
+
+  ngOnInit() {
+
+    var s = document.createElement("script");
+    s.type = "text/javascript";
+    s.src = "./assets/js/main1.js";
+    this.elementRef.nativeElement.appendChild(s);
+  } 
+  
+// ngAfterViewInit() {
+  
+//   $('#workdate').datetimepicker({
+//     footer: true,
+//     modal: true,
+//     format: 'mm/dd/yyyy hh:mm TT'
+//   }).on('change', (e: any) => {
+//     this.updateWorkDate(e.target.value);
+//   });
+// }
+
+ngAfterViewInit() {
+  const $jq = jQuery.noConflict();
+  ($jq('#workdate') as any).datetimepicker({
+    footer: true,
+    modal: true,
+    format: 'mm/dd/yyyy hh:mm TT'
+  }).on('change', (e: any) => {
+    this.updateWorkDate(e.target.value);
+  });
+}
+
+  
+  handleSearch(): void {
+    if (!this.workDateFrom && !this.timeZone) {
+      this.showAlert('Please enter a Work Date and select a Time Zone.');
+      return;
+    } else if (!this.workDateFrom) {
+      this.showAlert('Please enter a Work Date.');
+      return;
+    } else if (!this.timeZone) {
+      this.showAlert('Please select a Time Zone.');
+      return;
+    }
+
+    this.data ={
+      //this.workDateFrom = '2023-06-16';
+      workDateFrom :this.workDateFrom,
+
+      // workDateFrom:'05/01/2023',
+      timeZone:this.timeZone
+    }
+    this.produtionService.setData(this.data);
+
+    this.produtionTableComponent.getProcessProductionResponse(); 
+
+    this.router.navigate(['/prodution-table']);
+   
+    
+  }
+
+  getColumnNamess() {
+  
+    this.PreferencesmodalComponent. getProcessColumn();   
+  }  
+}
