@@ -1,0 +1,70 @@
+
+
+npm install @ng-select/ng-select
+
+-----------------------
+<ng-select [multiple]="true" [(ngModel)]="selectedItems">
+  <ng-option *ngFor="let option of options" [value]="option.id">{{ option.name }}</ng-option>
+</ng-select>
+<br/>
+Selected Items: {{ selectedItems | json }}
+<button (click)="updateSelectedItems()">Update Selected Items</button>
+--------------------------
+import { Component } from '@angular/core';
+import { DataService } from './data.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+  selectedItems: any[] = [];
+  options: any[] = [
+    { id: 1, name: 'Option 1' },
+    { id: 2, name: 'Option 2' },
+    { id: 3, name: 'Option 3' },
+
+    
+    
+  ];
+  constructor(private dataService: DataService) {}
+
+  updateSelectedItems(): void {
+    debugger
+    this.dataService.setSelectedItems(this.selectedItems);
+    console.log('sdvhsbcsbchbdas'+this.selectedItems);
+    
+  }
+}---------------------------------
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+// import { NgOptionHighlightModule } from '@ng-select/ng-option-highlight';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    // NgOptionHighlightModule,
+    CommonModule,
+    NgSelectModule,
+    FormsModule 
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }--------------------------
+ "node_modules/@ng-select/ng-select/themes/default.theme.css"
