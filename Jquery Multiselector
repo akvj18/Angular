@@ -2,3 +2,10 @@
 							<select [(ngModel)]="AttachedRoles" multiple class="filter-multi-select" id="attachedRoles" name="AttachedRoles">
 								<option *ngFor="let option of getattachedRoles" [ngValue]="option.selectedValues">{{ option.AttachedRoles }}</option>
 							  </select>
+
+
+dropdownOptions: { id: number, name: string }[] = [
+        { id: 1, name: 'HIS - Willowbrook Accounts' },
+        { id: 2, name: 'HIS - Pakridge Accounts' },
+       
+      ];
