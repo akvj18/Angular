@@ -1,0 +1,4 @@
+<label for="attachedRoles" class="form-label">Attached Rols</label>
+							<select [(ngModel)]="AttachedRoles" multiple class="filter-multi-select" id="attachedRoles" name="AttachedRoles">
+								<option *ngFor="let option of getattachedRoles" [ngValue]="option.selectedValues">{{ option.AttachedRoles }}</option>
+							  </select>
