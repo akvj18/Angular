@@ -1,0 +1,19 @@
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      // Handle reordering within the same list
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      // Handle moving items between lists
+      const draggedItem = event.previousContainer.data[event.previousIndex];
+      const originalIndex = event.previousIndex;
+        
+      const destList = event.container.data;
+    
+      // Insert the item at the original index in the destination list
+      destList.splice(originalIndex, 0, draggedItem);
+    }
+  }
