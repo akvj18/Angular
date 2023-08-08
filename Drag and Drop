@@ -264,7 +264,33 @@ constructor(private draganddropService: DraganddropService,private cdr: ChangeDe
     console.log("Default Items: " + this.defaultItems);
   }
 }
+findCorrespondingDefaultItems() {
+    debugger;
 
+    // Create a copy of selectedItems and columnsArray
+    this.selectedItems = [...this.done];
+    this.defaultItems = [...this.columnsArray];
+
+    // Create an array to store the combined items
+    const combinedItems: { selected: string, correspondingDefault: string | null }[] = [];
+
+    // Iterate through selectedItems and find corresponding default items
+    for (const selectedItem of this.selectedItems) {
+      const selectedItemIndex = this.done.indexOf(selectedItem);
+      let correspondingDefault: string | null = null; // Initialize with null
+      if (selectedItemIndex !== -1 && selectedItemIndex < this.columnsArray.length) {
+        correspondingDefault = this.defaultItems[selectedItemIndex];
+      }
+      combinedItems.push({ selected: selectedItem, correspondingDefault });
+    }
+
+    // Update defaultItems with correspondingDefault values, excluding null values
+    this.defaultItems = this.defaultItems.slice(); // Copy all items
+
+    console.log("Combined Items: ", combinedItems);
+    console.log("Selected Items: ", this.selectedItems);
+    console.log("Default Items: ", this.defaultItems);
+}
   
 
 
