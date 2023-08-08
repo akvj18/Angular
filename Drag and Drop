@@ -1,4 +1,164 @@
+<div class="container">
+   
+    <div class="row">
+      <div class="col-md-4">
+        <div class="drag-container drag-container--origin ">
+          <div class="section-heading">Header Items</div>
+  
+          <div cdkDropList id="optionsList" [cdkDropListData]="todo"
+            [cdkDropListConnectedTo]="['includeList','excludeList']" class="item-list" (cdkDropListDropped)="drop($event)">
+            <div class="item-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="drag-container drag-container--destination" [ngClass]="optionSelected !== 1 ? 'drag-container--disabled' : null">
+          <div class="section-heading">Selected order</div>
+          <div cdkDropList id="includeList" [cdkDropListData]="done" [cdkDropListEnterPredicate]="allowDrop"
+               [cdkDropListConnectedTo]="['optionsList']" class="item-list selected-order-container" (cdkDropListDropped)="drop($event)">
+            <div class="item-box" [ngClass]="optionSelected === 2 ? 'item-box--disabled' : null" *ngFor="let item of done" cdkDrag>
+              {{ item }}
+              
+              <span class="cancel-icon" (click)="cancelDrag(item)">&#x2715;</span>
+            </div>
+           
+          </div>
+        </div>
+        <div>
+          <button (click)="findCorrespondingDefaultItems()"> submit</button>
+        </div>
+      </div>
+      
+      
+      <div class="col-md-4">
+        <div class="drag-container drag-container--destination" [ngClass]="optionSelected !== 2 ? 'drag-container--disabled' : null">
+          <div class="section-heading">Default order</div>
+          <div cdkDropList id="excludeList" [cdkDropListData]="columnsArray" [cdkDropListEnterPredicate]="allowDrop"
+               [cdkDropListConnectedTo]="['optionsList']" class="item-list selected-order-container" (cdkDropListDropped)="drop($event)">
+            <div class="item-box" [ngClass]="optionSelected === 1 ? 'item-box--disabled' : null" *ngFor="let columnName of columnsArray" cdkDrag>
+              {{ columnName }}             
+            </div>
+          </div>
+        </div>
+      </div>      
+     
+    </div>
+  </div>
+------------------------------------------------------------import { Component } from '@angular/core';
+import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { DraganddropService } from './draganddrop.service';
+import { ChangeDetectorRef } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  selectedOrderArray: string[] = [];
+  done: any[] = new Array(46); 
+  selectedItems: string[] = [];
+defaultItems: string[] = [];
+  title = 'dropanddrag';
+  optionSelected: number = 1;
+  keys: string[] = [];
+  todo = ["ID", "accountnumber", "PatientName", "CLAIMKEY#","DOS","FACILITY","CPT","BILLED_VALUE","CHARGE_BALANCE","FinalActionNote","HOLD_CODE","FINALACTIONCODE",
+"resolutioncode","datacompletiondate","datauser","Codingcompletiondate","codinguser","WORK_DATE","WORKED_BY","PendingComments","ClaimStatus","Completed","FollowupDate","fname",
+"uploadeddate","Uploadedby","Clientslno","insurance","provider","age","lastworkeddate","insurance1","insurance2","fileddate","fileddate1","fileddate2","ARCompletionDate","claimtype","dxcode",
+"worktype","finalcausecode","denialcode","nooftouches","lastsub1","LASTSUB2","reviewdate","TOUCHCODE","FC","ClaimWorktype","Uploadtype","WorkedScreen","assituse","Queue information"
+];
+  response: any;
+  visibleColumns: string[] = [];
+  columnsArray: string[]=[]
+  defaultOrderArray: any;
+ 
+ngOnInit(){
+  this.draganddrop()
+}
+
+constructor(private draganddropService: DraganddropService,private cdr: ChangeDetectorRef){}
+
+
+  onChange($event:any) {
+    this.optionSelected = $event.value;
+  }
+
+  allowDrop = (drag: any, drop: any) => {
+   
+    if (drop.id === "includeList" && this.optionSelected === 1) {
+      return true;
+    } else if (drop.id === "excludeList" && this.optionSelected === 2) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  
+
+  // drop(event: CdkDragDrop<any[]>) {
+  //   if (event.previousContainer === event.container) {
+  //     moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+  //   } else {
+  //     transferArrayItem(event.previousContainer.data,
+  //                       event.container.data,
+  //                       event.previousIndex,
+  //                       event.currentIndex);
+  
+  //     const selectedItem = this.done[event.currentIndex];
+  //     const defaultIndex = this.columnsArray.indexOf(selectedItem);
+    
+  //     if (defaultIndex !== -1) {
+  //       this.columnsArray.splice(event.currentIndex, 0, ...this.columnsArray.splice(defaultIndex, 1));
+  //     }
+  //   }
+  // }
+  
+
+
+  // drop(event: CdkDragDrop<string[]>) {
+  //   debugger;
+  //   if (event.previousContainer === event.container) {
+  //     // Handle reordering within the same list
+  //     moveItemInArray(
+  //       event.container.data,
+  //       event.previousIndex,
+  //       event.currentIndex
+  //     );
+  //   } else {
+
+      
+  //     const draggedItem = event.previousContainer.data[event.previousIndex];
+  
+  //     if (event.previousContainer.id === "optionsList") {
+       
+  //       const defaultIndex = this.columnsArray.indexOf(draggedItem);
+  //       if (defaultIndex !== -1) {
+  //         // this.columnsArray.splice(event.currentIndex, 0, ...this.columnsArray.splice(defaultIndex, 1));
+         
+  //          this.done.splice(defaultIndex,0,draggedItem);
+         
+  //         // this.done.splice(event.currentIndex, 0, draggedItem);
+  //       }
+  //     } else {
+        
+  //       const currentIndex = event.currentIndex;
+  
+       
+  //       this.done.splice(currentIndex, 0, draggedItem);
+  
+        
+  //       const originalIndex = this.columnsArray.indexOf(draggedItem);
+  //       if (originalIndex !== -1) {
+  //         this.columnsArray.splice(originalIndex, 1);
+  //       }
+  //     }
+  
+  //     this.cdr.detectChanges();
+  //   }
+  // }
+  
+  
   drop(event: CdkDragDrop<string[]>) {
+    debugger;
     if (event.previousContainer === event.container) {
       // Handle reordering within the same list
       moveItemInArray(
@@ -7,13 +167,105 @@
         event.currentIndex
       );
     } else {
-      // Handle moving items between lists
       const draggedItem = event.previousContainer.data[event.previousIndex];
-      const originalIndex = event.previousIndex;
-        
-      const destList = event.container.data;
-    
-      // Insert the item at the original index in the destination list
-      destList.splice(originalIndex, 0, draggedItem);
+      const originalIndex = this.todo.indexOf(draggedItem); // Find index in Header Items list
+  
+      if (originalIndex !== -1) {
+        if (event.previousContainer.id === "optionsList") {
+          // Dragging from Header Items to Selected Order
+          // Remove the item from Header Items list
+          this.todo.splice(originalIndex, 1);
+  
+          // Insert the dragged item at the desired index in the selected order
+          this.done.splice(event.currentIndex, 0, draggedItem);
+        } else {
+          // Dragging from Default Order to Selected Order
+          const destList = event.container.data;
+          const currentIndex = event.currentIndex;
+  
+          // Determine the index to insert the dragged item in the selected order
+          let newIndex = currentIndex;
+          while (newIndex > 0 && draggedItem < destList[newIndex - 1]) {
+            newIndex--;
+          }
+  
+          // Remove the dragged item from its original position in default order
+          this.columnsArray.splice(originalIndex, 1);
+          // Insert the dragged item at the desired index in the selected order
+          this.done.splice(newIndex, 0, draggedItem);
+        }
+        if (this.done.length <= 46) {
+        this.cdr.detectChanges();
+        }
+      }
     }
   }
+  
+  
+  
+  cancelDrag(item: string) {
+    // Find the index of the item in the done list
+    const itemIndex = this.done.indexOf(item);
+    if (itemIndex !== -1) {
+      // Remove the item from the done list
+      const removedItem = this.done.splice(itemIndex, 1)[0];
+      this.cdr.detectChanges(); // Trigger change detection to update the view
+  
+      // Add the removed item back to the Header Items list
+      this.todo.push(removedItem);
+    }
+  }
+  
+ 
+  draganddrop() {
+    debugger;
+    this.draganddropService.value().subscribe((response: any) => {
+      console.log('Response:', response);
+      this.response = response; 
+      this.keys = Object.keys(response); 
+      const columns: Set<string> = new Set();
+    
+      for (const row of this.response) {
+        const rowKeys = Object.keys(row);
+        rowKeys.forEach(key => columns.add(key));
+      }
+      
+      this.columnsArray = Array.from(columns);
+      console.log('Columns Array:', this.columnsArray);
+        
+    });
+  }
+
+  
+
+  findCorrespondingDefaultItems() {
+    debugger;
+    
+    // Create a copy of selectedItems and columnsArray
+    this.selectedItems = [...this.done];
+    this.defaultItems = [...this.columnsArray];
+    
+    // Create an array to store the combined items
+    const combinedItems: string[] = [];
+  
+    // Iterate through selectedItems and find corresponding default items
+    for (const selectedItem of this.selectedItems) {
+      const selectedItemIndex = this.done.indexOf(selectedItem);
+      if (selectedItemIndex !== -1 && selectedItemIndex < this.columnsArray.length) {
+        combinedItems.push(selectedItem, this.columnsArray[selectedItemIndex]);
+      }
+    }
+  
+    // Update defaultItems with only non-null values
+    this.defaultItems = combinedItems.filter(item => item !== null) as string[];
+    
+    console.log("Combined Items: " + combinedItems);
+    console.log("Selected Items: " + this.selectedItems);
+    console.log("Default Items: " + this.defaultItems);
+  }
+}
+
+  
+
+
+
