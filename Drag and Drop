@@ -158,7 +158,7 @@ constructor(private draganddropService: DraganddropService,private cdr: ChangeDe
   
   
   drop(event: CdkDragDrop<string[]>) {
-    debugger;
+    debugger
     if (event.previousContainer === event.container) {
       // Handle reordering within the same list
       moveItemInArray(
@@ -173,51 +173,67 @@ constructor(private draganddropService: DraganddropService,private cdr: ChangeDe
       if (originalIndex !== -1) {
         if (event.previousContainer.id === "optionsList") {
           // Dragging from Header Items to Selected Order
+          // Check if the dragged item is already in the selected items list
+          if (!this.done.includes(draggedItem)) {
+            // Create a new array to hold the updated selected items
+            const newDone = [...this.done];
+            // Find the index to insert the dragged item in the selected order
+            let newIndex = event.currentIndex;
+            while (newIndex > 0 && newIndex < newDone.length && draggedItem < newDone[newIndex - 1]) {
+              newIndex--;
+            }
+  
+            // Insert the dragged item at the desired index in the new array
+            newDone.splice(newIndex, 0, draggedItem);
+            this.done = newDone; // Replace the existing done array with the new array
+          }
+  
           // Remove the item from Header Items list
           this.todo.splice(originalIndex, 1);
-  
-          // Insert the dragged item at the desired index in the selected order
-          this.done.splice(event.currentIndex, 0, draggedItem);
         } else {
           // Dragging from Default Order to Selected Order
           const destList = event.container.data;
           const currentIndex = event.currentIndex;
   
+          // Create a new array to hold the updated selected items
+          const newDone = [...this.done];
           // Determine the index to insert the dragged item in the selected order
           let newIndex = currentIndex;
-          while (newIndex > 0 && draggedItem < destList[newIndex - 1]) {
+          while (newIndex > 0 && newIndex < newDone.length && draggedItem < newDone[newIndex - 1]) {
             newIndex--;
           }
   
           // Remove the dragged item from its original position in default order
           this.columnsArray.splice(originalIndex, 1);
-          // Insert the dragged item at the desired index in the selected order
-          this.done.splice(newIndex, 0, draggedItem);
+          // Insert the dragged item at the desired index in the new array
+          newDone.splice(newIndex, 0, draggedItem);
+          this.done = newDone; // Replace the existing done array with the new array
         }
-        if (this.done.length <= 46) {
+  
+        // Ensure the length of the done array doesn't exceed 46
+        if (this.done.length < 46) {
+          this.done.pop();
+        }
+  
         this.cdr.detectChanges();
-        }
       }
     }
   }
   
   
   
-  cancelDrag(item: string) {
-    // Find the index of the item in the done list
-    const itemIndex = this.done.indexOf(item);
-    if (itemIndex !== -1) {
-      // Remove the item from the done list
-      const removedItem = this.done.splice(itemIndex, 1)[0];
-      this.cdr.detectChanges(); // Trigger change detection to update the view
+ cancelDrag(item: string) {
   
-      // Add the removed item back to the Header Items list
+    const itemIndex = this.done.indexOf(item);
+    if (itemIndex !== -1) {     
+      const removedItem = this.done.splice(itemIndex, 1)[0];
+      this.cdr.detectChanges();       
       this.todo.push(removedItem);
     }
   }
   
  
-  draganddrop() {
+ draganddrop() {
     debugger;
     this.draganddropService.value().subscribe((response: any) => {
       console.log('Response:', response);
@@ -238,60 +254,50 @@ constructor(private draganddropService: DraganddropService,private cdr: ChangeDe
 
   
 
-  findCorrespondingDefaultItems() {
+   findCorrespondingDefaultItems() {
     debugger;
+    this.originalSelectedItems = [...this.selectedItems];
+    this.originalDefaultItems = [...this.defaultItems];
     
+    // Clear the values inside this.done array
+    
+  
     // Create a copy of selectedItems and columnsArray
     this.selectedItems = [...this.done];
     this.defaultItems = [...this.columnsArray];
-    
-    // Create an array to store the combined items
-    const combinedItems: string[] = [];
   
-    // Iterate through selectedItems and find corresponding default items
-    for (const selectedItem of this.selectedItems) {
-      const selectedItemIndex = this.done.indexOf(selectedItem);
-      if (selectedItemIndex !== -1 && selectedItemIndex < this.columnsArray.length) {
-        combinedItems.push(selectedItem, this.columnsArray[selectedItemIndex]);
-      }
+    // Pad the shorter array with 'undefined' values
+    while (this.selectedItems.length < this.defaultItems.length) {
+      this.selectedItems.push('undefined');
+    }
+    while (this.defaultItems.length < this.selectedItems.length) {
+      this.defaultItems.push('undefined');
     }
   
-    // Update defaultItems with only non-null values
-    this.defaultItems = combinedItems.filter(item => item !== null) as string[];
-    
-    console.log("Combined Items: " + combinedItems);
-    console.log("Selected Items: " + this.selectedItems);
-    console.log("Default Items: " + this.defaultItems);
-  }
-}
-findCorrespondingDefaultItems() {
-    debugger;
-
-    // Create a copy of selectedItems and columnsArray
-    this.selectedItems = [...this.done];
-    this.defaultItems = [...this.columnsArray];
-
     // Create an array to store the combined items
     const combinedItems: { selected: string, correspondingDefault: string | null }[] = [];
-
+  
     // Iterate through selectedItems and find corresponding default items
-    for (const selectedItem of this.selectedItems) {
-      const selectedItemIndex = this.done.indexOf(selectedItem);
-      let correspondingDefault: string | null = null; // Initialize with null
-      if (selectedItemIndex !== -1 && selectedItemIndex < this.columnsArray.length) {
-        correspondingDefault = this.defaultItems[selectedItemIndex];
-      }
+    for (let i = 0; i < this.selectedItems.length; i++) {
+      const selectedItem = this.selectedItems[i];
+      const correspondingDefault = this.defaultItems[i] === 'undefined' ? null : this.defaultItems[i];
       combinedItems.push({ selected: selectedItem, correspondingDefault });
     }
+  
+    this.done = this.done.map(() => undefined);
 
-    // Update defaultItems with correspondingDefault values, excluding null values
-    this.defaultItems = this.defaultItems.slice(); // Copy all items
 
     console.log("Combined Items: ", combinedItems);
-    console.log("Selected Items: ", this.selectedItems);
-    console.log("Default Items: ", this.defaultItems);
-}
+    console.log("Original Selected Items: ", this.selectedItems);
+    console.log("Original Default Items: ", this.defaultItems);
+  }
   
+  
+  findEditItems() {
+    debugger;
+    this.originalDoneValues = [...this.selectedItems];
+    this.done = [...this.originalDoneValues]; 
+  }
 
 
 
