@@ -44,6 +44,18 @@
      
     </div>
   </div>
+
+
+
+ <div class="col-md-4">
+      <div class="drag-container drag-container--origin">
+        <div class="section-heading">Header Items</div>
+        <div cdkDropList id="optionsList" [cdkDropListData]="todo"
+             [cdkDropListConnectedTo]="['includeList','excludeList']" class="item-list" (cdkDropListDropped)="drop($event)">
+             <div class="item-box" *ngFor="let item of todo" cdkDrag>{{ item }}</div>
+        </div>
+      </div>
+    </div>
 ------------------------------------------------------------import { Component } from '@angular/core';
 import { CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
 import { DraganddropService } from './draganddrop.service';
