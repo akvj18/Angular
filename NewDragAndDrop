@@ -134,8 +134,10 @@ constructor(private draganddropService: DraganddropService,private cdr: ChangeDe
       
       
       // Delete the first item from the 'done' array
-      this.done.shift();
-  
+      //this.done.shift();
+    if (droppedIndex >= 0 && droppedIndex < this.done.length) {
+        this.done.splice(droppedIndex, 1);
+    }
       // Insert the dragged item at the specified index in the "Selected order" list
       this.done.splice(droppedIndex, 0, draggedItem);
   
