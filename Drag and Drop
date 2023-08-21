@@ -400,4 +400,59 @@ export class DraganddropService {
 
         }
 
+------------------------------------------------------ 
+        [HttpPost]
+        [Route("api/usermanagemetController/Exceldata")]
 
+        public IActionResult Exceldata([FromBody] Dictionary<string, List<string>> columnData)
+
+        {
+
+            string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["ConString2"].ConnectionString;
+            string tableName = "tbl_exceldatainsert";
+
+            DataTable dataTable = new DataTable();
+
+            // Create columns
+            foreach (var columnName in columnData.Keys)
+            {
+                dataTable.Columns.Add(columnName);
+            }
+
+            // Assuming all lists have the same count and align with column names
+            int rowCount = columnData.Values.FirstOrDefault()?.Count ?? 0;
+            for (int i = 0; i < rowCount; i++)
+            {
+                DataRow row = dataTable.NewRow();
+                foreach (var columnName in columnData.Keys)
+                {
+                    row[columnName] = columnData[columnName][i];
+                }
+                dataTable.Rows.Add(row);
+            }
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+
+                foreach (DataRow row in dataTable.Rows)
+                {
+                    string insertQuery = $"INSERT INTO {tableName} ({string.Join(", ", dataTable.Columns.Cast<DataColumn>().Select(col => col.ColumnName))}) VALUES ({string.Join(", ", dataTable.Columns.Cast<DataColumn>().Select(col => $"@{col.ColumnName}"))})";
+
+                    using (SqlCommand command = new SqlCommand(insertQuery, connection))
+                    {
+                        foreach (DataColumn col in dataTable.Columns)
+                        {
+                            command.Parameters.AddWithValue($"@{col.ColumnName}", row[col]);
+                        }
+                        command.ExecuteNonQuery();
+                    }
+                }
+
+                connection.Close();
+            }
+
+            return null;
+
+        }
+    }
